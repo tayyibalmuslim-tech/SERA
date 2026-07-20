@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>السيرة النبوية — 46 درسًا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6EFDD;
+    --paper-2:#EFE4C8;
+    --paper-3:#FBF6E9;
+    --ink:#2B2116;
+    --ink-dim:#6B5D45;
+    --gold:#A9792C;
+    --gold-deep:#7C5A20;
+    --gold-soft:#D9B872;
+    --green:#3F5D42;
+    --line:#D8C9A3;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Cairo',sans-serif;
+    line-height:1.8;
+    min-height:100vh;
+  }
+  h1,.eyebrow{font-family:'Amiri',serif;}
+
+  /* زخرفة هندسية إسلامية خفيفة بالخلفية */
+  .ornament{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.5;
+    background-image:
+      radial-gradient(ellipse at top, rgba(169,121,44,.10), transparent 55%),
+      radial-gradient(ellipse at bottom left, rgba(63,93,66,.06), transparent 50%);
+  }
+
+  header{
+    position:relative; z-index:1;
+    text-align:center;
+    padding:90px 20px 60px;
+    border-bottom:1px solid var(--line);
+  }
+  header::after{
+    content:"";
+    display:block;
+    width:140px; height:2px;
+    background:linear-gradient(to right, transparent, var(--gold), transparent);
+    margin:26px auto 0;
+  }
+  .eyebrow{
+    display:inline-block;
+    color:var(--gold-deep);
+    font-size:1.05rem;
+    letter-spacing:.15em;
+    margin-bottom:16px;
+  }
+  header h1{
+    font-size:clamp(2.2rem,5.5vw,3.6rem);
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:16px;
+  }
+  header p{
+    max-width:600px;
+    margin:0 auto;
+    color:var(--ink-dim);
+    font-size:1.05rem;
+  }
+
+  .stages-wrap{
+    position:relative; z-index:1;
+    max-width:820px;
+    margin:0 auto;
+    padding:60px 20px 100px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .stage{
+    background:var(--paper-3);
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+  }
+
+  .stage-header{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:20px 22px;
+    background:transparent;
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+    text-align:right;
+    color:inherit;
+  }
+  .stage-info{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    min-width:0;
+  }
+  .stage-index{
+    flex-shrink:0;
+    font-family:'Amiri',serif;
+    font-size:1.3rem;
+    font-weight:700;
+    color:var(--gold-deep);
+    width:38px; height:38px;
+    border:1.5px solid var(--gold-soft);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .stage-text{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    min-width:0;
+  }
+  .stage-name{
+    font-weight:700;
+    font-size:1.08rem;
+    color:var(--ink);
+  }
+  .stage-desc{
+    font-size:.85rem;
+    color:var(--ink-dim);
+  }
+  .stage-meta{
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .stage-count{
+    font-size:.82rem;
+    color:var(--gold-deep);
+    background:var(--paper-2);
+    padding:4px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .stage-chevron{
+    color:var(--gold);
+    transition:transform .25s ease;
+    font-size:.9rem;
+  }
+  .stage.open .stage-chevron{
+    transform:rotate(180deg);
+  }
+
+  .lesson-list{
+    list-style:none;
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows .3s ease;
+  }
+  .stage.open .lesson-list{
+    grid-template-rows:1fr;
+  }
+  .lesson-list > *{
+    overflow:hidden;
+  }
+  .lesson-list ul, .lesson-list{ }
+  .lesson-list{
+    display:grid;
+  }
+  .lesson-list-inner{
+    overflow:hidden;
+  }
+
+  .lesson-list{
+    padding:0 14px;
+  }
+  .lesson-list > li{
+    overflow:hidden;
+  }
+
+  .lesson-card{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:13px 14px;
+    text-decoration:none;
+    color:inherit;
+    border-top:1px solid var(--line);
+    transition:background .2s ease, padding-right .2s ease;
+  }
+  .stage.open .lesson-list > li:first-child .lesson-card{
+    border-top:1px solid var(--line);
+  }
+  .lesson-card:hover{
+    background:var(--paper-2);
+    padding-right:20px;
+  }
+  .lesson-num{
+    flex-shrink:0;
+    font-family:'Amiri',serif;
+    font-weight:700;
+    color:var(--gold);
+    font-size:.95rem;
+    width:28px;
+  }
+  .lesson-title{
+    flex:1;
+    font-size:.95rem;
+    color:var(--ink);
+  }
+  .lesson-arrow{
+    flex-shrink:0;
+    color:var(--gold);
+    opacity:0;
+    transition:opacity .2s ease;
+    font-size:.9rem;
+  }
+  .lesson-card:hover .lesson-arrow{
+    opacity:1;
+  }
+
+  footer{
+    position:relative; z-index:1;
+    text-align:center;
+    padding:50px 20px 70px;
+    color:var(--ink-dim);
+    font-size:.95rem;
+    border-top:1px solid var(--line);
+  }
+  footer .dua{
+    font-family:'Amiri',serif;
+    color:var(--gold-deep);
+    font-size:1.2rem;
+    margin-bottom:10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="ornament"></div>
+
+<header>
+  <span class="eyebrow">سلسلة تعليمية</span>
+  <h1>السيرة النبوية</h1>
+  <p>ستة وأربعون درسًا تروي سيرة النبي ﷺ من المولد إلى الرحيل، مقسّمة على أحد عشر مرحلة زمنية.</p>
+</header>
+
+<div class="stages-wrap">
+    <div class="stage" data-stage="0">
+      <button class="stage-header" type="button" aria-expanded="false">
+        <span class="stage-info">
+          <span class="stage-index">01</span>
+          <span class="stage-text">
+            <span class="stage-name">قبل البعثة والمقدمات</span>
+            <span class="stage-desc">الجذور والتمهيد قبل نزول الوحي</span>
+          </span>
+        </span>
+        <span class="stage-meta">
+          <span class="stage-count">4 دروس</span>
+          <span class="stage-chevron">▾</span>
+        </span>
+      </button>
+      <ul class="lesson-list">
+        <li>
+          <a class="lesson-card" href="steps/01-مقدمة-ج1-السيرة-وبدء-الأمة.html">
+            <span class="lesson-num">01</span>
+            <span class="lesson-title">مقدمة ج1: السيرة وبدء الأمة</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/02-مقدمة-ج2-من-الظلمات-إلى-النور.html">
+            <span class="lesson-num">02</span>
+            <span class="lesson-title">مقدمة ج2: من الظلمات إلى النور</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/03-مقدمة-ج3-من-هذا-بدأ-الإسلام.html">
+            <span class="lesson-num">03</span>
+            <span class="lesson-title">مقدمة ج3: من هذا بدأ الإسلام</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/04-بدء-الوحي.html">
+            <span class="lesson-num">04</span>
+            <span class="lesson-title">بدء الوحي</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="stage" data-stage="1">
+      <button class="stage-header" type="button" aria-expanded="false">
+        <span class="stage-info">
+          <span class="stage-index">02</span>
+          <span class="stage-text">
+            <span class="stage-name">الدعوة بمكة: السر ثم الجهر</span>
+            <span class="stage-desc">بداية الدعوة وأولى مراحل التربية والثبات</span>
+          </span>
+        </span>
+        <span class="stage-meta">
+          <span class="stage-count">7 دروس</span>
+          <span class="stage-chevron">▾</span>
+        </span>
+      </button>
+      <ul class="lesson-list">
+        <li>
+          <a class="lesson-card" href="steps/05-الدعوة-سرًا.html">
+            <span class="lesson-num">05</span>
+            <span class="lesson-title">الدعوة سرًا</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/06-الدعوة-جهرًا.html">
+            <span class="lesson-num">06</span>
+            <span class="lesson-title">الدعوة جهرًا</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/07-تربية-الثبات.html">
+            <span class="lesson-num">07</span>
+            <span class="lesson-title">تربية الثبات</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/08-هجرة-الحبشة-الأولى.html">
+            <span class="lesson-num">08</span>
+            <span class="lesson-title">هجرة الحبشة الأولى</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/09-هجرة-الحبشة-الثانية.html">
+            <span class="lesson-num">09</span>
+            <span class="lesson-title">هجرة الحبشة الثانية</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/10-إسلام-عمر.html">
+            <span class="lesson-num">10</span>
+            <span class="lesson-title">إسلام عمر</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/11-عام-الحزن.html">
+            <span class="lesson-num">11</span>
+            <span class="lesson-title">عام الحزن</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="stage" data-stage="2">
+      <button class="stage-header" type="button" aria-expanded="false">
+        <span class="stage-info">
+          <span class="stage-index">03</span>
+          <span class="stage-text">
+            <span class="stage-name">بيعتا العقبة</span>
+            <span class="stage-desc">التمهيد للهجرة وميلاد نصرة الأنصار</span>
+          </span>
+        </span>
+        <span class="stage-meta">
+          <span class="stage-count">2 دروس</span>
+          <span class="stage-chevron">▾</span>
+        </span>
+      </button>
+      <ul class="lesson-list">
+        <li>
+          <a class="lesson-card" href="steps/12-بيعة-العقبة-الأولى.html">
+            <span class="lesson-num">12</span>
+            <span class="lesson-title">بيعة العقبة الأولى</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/13-بيعة-العقبة-الثانية.html">
+            <span class="lesson-num">13</span>
+            <span class="lesson-title">بيعة العقبة الثانية</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="stage" data-stage="3">
+      <button class="stage-header" type="button" aria-expanded="false">
+        <span class="stage-info">
+          <span class="stage-index">04</span>
+          <span class="stage-text">
+            <span class="stage-name">الهجرة وقيام الدولة بالمدينة</span>
+            <span class="stage-desc">بناء المجتمع الإسلامي الأول وعلاقاته</span>
+          </span>
+        </span>
+        <span class="stage-meta">
+          <span class="stage-count">5 دروس</span>
+          <span class="stage-chevron">▾</span>
+        </span>
+      </button>
+      <ul class="lesson-list">
+        <li>
+          <a class="lesson-card" href="steps/14-الهجرة-إلى-المدينة.html">
+            <span class="lesson-num">14</span>
+            <span class="lesson-title">الهجرة إلى المدينة</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/15-قيام-الدولة-الإسلامية.html">
+            <span class="lesson-num">15</span>
+            <span class="lesson-title">قيام الدولة الإسلامية</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/16-مجتمع-المدينة.html">
+            <span class="lesson-num">16</span>
+            <span class="lesson-title">مجتمع المدينة</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/17-المشركون-والدولة-الإسلامية.html">
+            <span class="lesson-num">17</span>
+            <span class="lesson-title">المشركون والدولة الإسلامية</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/18-اليهود-والدولة-الإسلامية.html">
+            <span class="lesson-num">18</span>
+            <span class="lesson-title">اليهود والدولة الإسلامية</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="stage" data-stage="4">
+      <button class="stage-header" type="button" aria-expanded="false">
+        <span class="stage-info">
+          <span class="stage-index">05</span>
+          <span class="stage-text">
+            <span class="stage-name">غزوة بدر الكبرى</span>
+            <span class="stage-desc">أول مواجهة فاصلة بين الحق والباطل</span>
+          </span>
+        </span>
+        <span class="stage-meta">
+          <span class="stage-count">5 دروس</span>
+          <span class="stage-chevron">▾</span>
+        </span>
+      </button>
+      <ul class="lesson-list">
+        <li>
+          <a class="lesson-card" href="steps/19-الطريق-إلى-بدر.html">
+            <span class="lesson-num">19</span>
+            <span class="lesson-title">الطريق إلى بدر</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/20-أهل-بدر.html">
+            <span class="lesson-num">20</span>
+            <span class="lesson-title">أهل بدر</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/21-يوم-بدر.html">
+            <span class="lesson-num">21</span>
+            <span class="lesson-title">يوم بدر</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/22-نصر-بدر.html">
+            <span class="lesson-num">22</span>
+            <span class="lesson-title">نصر بدر</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/23-ما-بعد-بدر.html">
+            <span class="lesson-num">23</span>
+            <span class="lesson-title">ما بعد بدر</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="stage" data-stage="5">
+      <button class="stage-header" type="button" aria-expanded="false">
+        <span class="stage-info">
+          <span class="stage-index">06</span>
+          <span class="stage-text">
+            <span class="stage-name">غزوة أُحد وتبعاتها</span>
+            <span class="stage-desc">الابتلاء ودرس التمحيص</span>
+          </span>
+        </span>
+        <span class="stage-meta">
+          <span class="stage-count">3 دروس</span>
+          <span class="stage-chevron">▾</span>
+        </span>
+      </button>
+      <ul class="lesson-list">
+        <li>
+          <a class="lesson-card" href="steps/24-الطريق-إلى-أحد.html">
+            <span class="lesson-num">24</span>
+            <span class="lesson-title">الطريق إلى أحد</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/25-يوم-أحد.html">
+            <span class="lesson-num">25</span>
+            <span class="lesson-title">يوم أحد</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/26-الخروج-من-مصيبة-أحد.html">
+            <span class="lesson-num">26</span>
+            <span class="lesson-title">الخروج من مصيبة أحد</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="stage" data-stage="6">
+      <button class="stage-header" type="button" aria-expanded="false">
+        <span class="stage-info">
+          <span class="stage-index">07</span>
+          <span class="stage-text">
+            <span class="stage-name">غزوة الأحزاب</span>
+            <span class="stage-desc">أعظم تكتل ضد الدولة الإسلامية ونتائجه</span>
+          </span>
+        </span>
+        <span class="stage-meta">
+          <span class="stage-count">3 دروس</span>
+          <span class="stage-chevron">▾</span>
+        </span>
+      </button>
+      <ul class="lesson-list">
+        <li>
+          <a class="lesson-card" href="steps/27-الطريق-إلى-الأحزاب.html">
+            <span class="lesson-num">27</span>
+            <span class="lesson-title">الطريق إلى الأحزاب</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/28-الأحزاب.html">
+            <span class="lesson-num">28</span>
+            <span class="lesson-title">الأحزاب</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/29-المسلمون-بعد-الأحزاب.html">
+            <span class="lesson-num">29</span>
+            <span class="lesson-title">المسلمون بعد الأحزاب</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="stage" data-stage="7">
+      <button class="stage-header" type="button" aria-expanded="false">
+        <span class="stage-info">
+          <span class="stage-index">08</span>
+          <span class="stage-text">
+            <span class="stage-name">صلح الحديبية</span>
+            <span class="stage-desc">نصر بصورة سلم وانفتاح عالمي للدعوة</span>
+          </span>
+        </span>
+        <span class="stage-meta">
+          <span class="stage-count">4 دروس</span>
+          <span class="stage-chevron">▾</span>
+        </span>
+      </button>
+      <ul class="lesson-list">
+        <li>
+          <a class="lesson-card" href="steps/30-الطريق-إلى-الحديبية.html">
+            <span class="lesson-num">30</span>
+            <span class="lesson-title">الطريق إلى الحديبية</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/31-صلح-الحديبية.html">
+            <span class="lesson-num">31</span>
+            <span class="lesson-title">صلح الحديبية</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/32-ما-بعد-الحديبية.html">
+            <span class="lesson-num">32</span>
+            <span class="lesson-title">ما بعد الحديبية</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/33-عالمية-الإسلام.html">
+            <span class="lesson-num">33</span>
+            <span class="lesson-title">عالمية الإسلام</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="stage" data-stage="8">
+      <button class="stage-header" type="button" aria-expanded="false">
+        <span class="stage-info">
+          <span class="stage-index">09</span>
+          <span class="stage-text">
+            <span class="stage-name">الفتوحات الكبرى</span>
+            <span class="stage-desc">خيبر، مؤتة، وفتح مكة</span>
+          </span>
+        </span>
+        <span class="stage-meta">
+          <span class="stage-count">6 دروس</span>
+          <span class="stage-chevron">▾</span>
+        </span>
+      </button>
+      <ul class="lesson-list">
+        <li>
+          <a class="lesson-card" href="steps/34-فتح-خيبر.html">
+            <span class="lesson-num">34</span>
+            <span class="lesson-title">فتح خيبر</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/35-قوة-الإسلام.html">
+            <span class="lesson-num">35</span>
+            <span class="lesson-title">قوة الإسلام</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/36-نصر-مؤتة.html">
+            <span class="lesson-num">36</span>
+            <span class="lesson-title">نصر مؤتة</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/37-الطريق-إلى-مكة.html">
+            <span class="lesson-num">37</span>
+            <span class="lesson-title">الطريق إلى مكة</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/38-فتح-مكة.html">
+            <span class="lesson-num">38</span>
+            <span class="lesson-title">فتح مكة</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/39-إسلام-مكة.html">
+            <span class="lesson-num">39</span>
+            <span class="lesson-title">إسلام مكة</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="stage" data-stage="9">
+      <button class="stage-header" type="button" aria-expanded="false">
+        <span class="stage-info">
+          <span class="stage-index">10</span>
+          <span class="stage-text">
+            <span class="stage-name">حنين والطائف وتبوك</span>
+            <span class="stage-desc">استكمال توحيد الجزيرة العربية</span>
+          </span>
+        </span>
+        <span class="stage-meta">
+          <span class="stage-count">5 دروس</span>
+          <span class="stage-chevron">▾</span>
+        </span>
+      </button>
+      <ul class="lesson-list">
+        <li>
+          <a class="lesson-card" href="steps/40-يوم-حنين.html">
+            <span class="lesson-num">40</span>
+            <span class="lesson-title">يوم حنين</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/41-بين-حنين-والطائف.html">
+            <span class="lesson-num">41</span>
+            <span class="lesson-title">بين حنين والطائف</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/42-إسلام-هوازن.html">
+            <span class="lesson-num">42</span>
+            <span class="lesson-title">إسلام هوازن</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/43-غزوة-تبوك.html">
+            <span class="lesson-num">43</span>
+            <span class="lesson-title">غزوة تبوك</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/44-ما-بعد-تبوك.html">
+            <span class="lesson-num">44</span>
+            <span class="lesson-title">ما بعد تبوك</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="stage" data-stage="10">
+      <button class="stage-header" type="button" aria-expanded="false">
+        <span class="stage-info">
+          <span class="stage-index">11</span>
+          <span class="stage-text">
+            <span class="stage-name">خاتمة السيرة</span>
+            <span class="stage-desc">حجة الوداع ووفاة النبي ﷺ</span>
+          </span>
+        </span>
+        <span class="stage-meta">
+          <span class="stage-count">2 دروس</span>
+          <span class="stage-chevron">▾</span>
+        </span>
+      </button>
+      <ul class="lesson-list">
+        <li>
+          <a class="lesson-card" href="steps/45-الوداع.html">
+            <span class="lesson-num">45</span>
+            <span class="lesson-title">الوداع</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+        <li>
+          <a class="lesson-card" href="steps/46-والأخير-خاتمة-السيرة.html">
+            <span class="lesson-num">46</span>
+            <span class="lesson-title">والأخير: خاتمة السيرة</span>
+            <span class="lesson-arrow">←</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+</div>
+
+<footer>
+  <p class="dua">اللهم صلِّ وسلم على نبينا محمد</p>
+  <p>سلسلة السيرة النبوية — 46 درسًا</p>
+</footer>
+
+<script>
+document.querySelectorAll('.stage-header').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const stage = btn.closest('.stage');
+    const isOpen = stage.classList.contains('open');
+    stage.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+});
+</script>
+
+</body>
+</html>
