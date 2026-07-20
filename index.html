@@ -160,29 +160,13 @@
 
   .lesson-list{
     list-style:none;
-    display:grid;
-    grid-template-rows:0fr;
-    transition:grid-template-rows .3s ease;
+    padding:0 14px;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
   }
   .stage.open .lesson-list{
-    grid-template-rows:1fr;
-  }
-  .lesson-list > *{
-    overflow:hidden;
-  }
-  .lesson-list ul, .lesson-list{ }
-  .lesson-list{
-    display:grid;
-  }
-  .lesson-list-inner{
-    overflow:hidden;
-  }
-
-  .lesson-list{
-    padding:0 14px;
-  }
-  .lesson-list > li{
-    overflow:hidden;
+    max-height:3000px;
   }
 
   .lesson-card{
@@ -194,9 +178,6 @@
     color:inherit;
     border-top:1px solid var(--line);
     transition:background .2s ease, padding-right .2s ease;
-  }
-  .stage.open .lesson-list > li:first-child .lesson-card{
-    border-top:1px solid var(--line);
   }
   .lesson-card:hover{
     background:var(--paper-2);
