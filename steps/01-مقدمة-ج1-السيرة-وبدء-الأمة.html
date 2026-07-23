@@ -3,142 +3,700 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مقدمة ج1: السيرة وبدء الأمة — السيرة النبوية</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>مقدمة في دراسة السيرة النبوية | المحاضرة الأولى</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F6EFDD;
-    --paper-2:#EFE4C8;
-    --ink:#2B2116;
-    --ink-dim:#6B5D45;
-    --gold:#A9792C;
-    --gold-deep:#7C5A20;
-    --green:#3F5D42;
-    --line:#D8C9A3;
+    --gold:#b8860b;
+    --gold-light:#d4a94a;
+    --brown-dark:#3e2c1c;
+    --brown:#5c4130;
+    --green-dark:#1f4d3d;
+    --green:#2e6b52;
+    --cream:#faf6ee;
+    --cream-2:#f2e9d8;
+    --ink:#2b2118;
+    --border:#d9c79a;
   }
-  *{margin:0;padding:0;box-sizing:border-box;}
+  *{box-sizing:border-box;margin:0;padding:0;}
   body{
-    background:var(--paper);
-    color:var(--ink);
     font-family:'Cairo',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
     line-height:1.9;
-    min-height:100vh;
-    background-image:
-      radial-gradient(ellipse at top right, rgba(169,121,44,.08), transparent 55%);
   }
-  h1,.eyebrow{font-family:'Amiri',serif;}
-
-  .top-nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:20px 32px;
-    border-bottom:1px solid var(--line);
-    font-size:.95rem;
-  }
-  .top-nav a{
-    color:var(--gold-deep);
-    text-decoration:none;
-    font-weight:600;
-  }
-  .top-nav a:hover{ color:var(--gold); }
-  .top-nav .stage-tag{
-    color:var(--ink-dim);
-    font-size:.85rem;
-  }
-
   header{
+    background:linear-gradient(135deg,var(--brown-dark) 0%,var(--brown) 55%,var(--green-dark) 100%);
+    color:#f6ecd6;
+    padding:50px 20px 40px;
     text-align:center;
-    padding:70px 20px 50px;
-    border-bottom:1px solid var(--line);
     position:relative;
+    border-bottom:6px solid var(--gold);
+    overflow:hidden;
   }
   header::before{
     content:"";
-    position:absolute;
-    top:0; right:50%; transform:translateX(50%);
-    width:120px; height:3px;
-    background:var(--gold);
-    opacity:.5;
+    position:absolute;inset:0;
+    background-image:radial-gradient(circle at 20% 30%, rgba(212,169,74,.08) 0, transparent 40%),
+                      radial-gradient(circle at 80% 70%, rgba(212,169,74,.08) 0, transparent 40%);
   }
-  .eyebrow{
+  .series-badge{
     display:inline-block;
-    color:var(--gold-deep);
-    font-size:1rem;
-    letter-spacing:.1em;
-    margin-bottom:14px;
+    background:rgba(212,169,74,.18);
+    border:1px solid var(--gold-light);
+    color:var(--gold-light);
+    padding:6px 18px;
+    border-radius:30px;
+    font-size:.9rem;
+    margin-bottom:16px;
+    position:relative;
   }
   header h1{
-    font-size:clamp(1.8rem,4.5vw,2.7rem);
-    color:var(--ink);
+    font-family:'Amiri',serif;
+    font-size:2.5rem;
     font-weight:700;
+    margin-bottom:10px;
+    position:relative;
+    color:#fbf1da;
   }
-
-  main{
-    max-width:760px;
+  header p.subtitle{
+    font-size:1.1rem;
+    color:#e7d8b3;
+    max-width:700px;
     margin:0 auto;
-    padding:70px 24px;
+    position:relative;
   }
-  .placeholder{
-    border:1.5px dashed var(--gold);
-    background:var(--paper-2);
-    border-radius:10px;
-    padding:60px 30px;
-    text-align:center;
-    color:var(--ink-dim);
-  }
-  .placeholder .icon{
-    font-size:2rem;
-    color:var(--gold-deep);
-    margin-bottom:16px;
-  }
-  .placeholder p{ max-width:420px; margin:0 auto; }
-
-  .bottom-nav{
-    display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-    max-width:760px;
-    margin:0 auto;
-    padding:0 24px 80px;
+  header .lecturer{
+    margin-top:14px;
     font-size:.95rem;
+    color:var(--gold-light);
+    position:relative;
   }
-  .bottom-nav a{
-    color:var(--ink-dim);
+  .top-banner-btn{
+    margin-top:22px;
+    position:relative;
+  }
+  .btn-anki{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--gold);
+    color:#2b2118;
+    font-weight:700;
+    padding:12px 26px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    font-family:'Cairo',sans-serif;
+    font-size:1rem;
+    transition:.2s;
+    box-shadow:0 4px 14px rgba(0,0,0,.25);
+  }
+  .btn-anki:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+  nav.toc{
+    max-width:900px;
+    margin:-30px auto 40px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px 28px;
+    box-shadow:0 8px 24px rgba(62,44,28,.1);
+    position:relative;
+    z-index:2;
+  }
+  nav.toc h2{
+    font-family:'Amiri',serif;
+    color:var(--brown-dark);
+    font-size:1.3rem;
+    margin-bottom:14px;
+    border-bottom:2px solid var(--gold-light);
+    padding-bottom:8px;
+  }
+  nav.toc ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  nav.toc a{
+    color:var(--green-dark);
     text-decoration:none;
-    border:1px solid var(--line);
-    padding:10px 18px;
-    border-radius:8px;
-    transition:border-color .2s ease, color .2s ease, background .2s ease;
-    background:var(--paper-2);
+    font-size:.95rem;
+    display:block;
+    padding:6px 10px;
+    border-radius:6px;
+    transition:.2s;
   }
-  .bottom-nav a:hover{
-    border-color:var(--gold);
-    color:var(--gold-deep);
+  nav.toc a:hover{background:var(--cream-2);color:var(--brown-dark);}
+
+  main{max-width:900px;margin:0 auto;padding:0 20px 60px;}
+
+  section{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:30px 32px;
+    margin-bottom:28px;
+    box-shadow:0 4px 16px rgba(62,44,28,.06);
+  }
+  section h2{
+    font-family:'Amiri',serif;
+    color:var(--brown-dark);
+    font-size:1.6rem;
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border-bottom:3px solid var(--gold-light);
+    padding-bottom:12px;
+  }
+  section h3{
+    color:var(--green-dark);
+    font-size:1.2rem;
+    margin:20px 0 10px;
+  }
+  section p{margin-bottom:14px;color:var(--ink);}
+
+  .definition-box{
+    background:var(--cream-2);
+    border-right:5px solid var(--gold);
+    border-radius:10px;
+    padding:16px 20px;
+    margin:16px 0;
+  }
+  .definition-box .label{font-weight:800;color:var(--brown-dark);display:block;margin-bottom:6px;}
+
+  .quote-block{
+    background:linear-gradient(135deg,#eef6f1,#f7f9f4);
+    border:1px solid #c9dfd2;
+    border-right:5px solid var(--green);
+    border-radius:10px;
+    padding:18px 22px;
+    margin:16px 0;
+    font-family:'Amiri',serif;
+    font-size:1.15rem;
+    color:var(--green-dark);
+  }
+  .quote-block .source{
+    display:block;
+    margin-top:10px;
+    font-family:'Cairo',sans-serif;
+    font-size:.85rem;
+    color:var(--brown);
+    font-weight:600;
+  }
+
+  .evidence-block{
+    background:#fdf8ec;
+    border:1px dashed var(--gold);
+    border-radius:10px;
+    padding:16px 20px;
+    margin:16px 0;
+  }
+  .evidence-block .label{font-weight:800;color:var(--gold);display:block;margin-bottom:6px;}
+
+  .key-point{
+    background:#f4f9f6;
+    border-right:5px solid var(--green-dark);
+    border-radius:10px;
+    padding:14px 20px;
+    margin:12px 0;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+  }
+  .key-point::before{content:"✺";color:var(--gold);font-size:1.2rem;}
+
+  .warning-box{
+    background:#fdf1ec;
+    border-right:5px solid #b5432b;
+    border-radius:10px;
+    padding:16px 20px;
+    margin:16px 0;
+  }
+  .warning-box .label{font-weight:800;color:#b5432b;display:block;margin-bottom:6px;}
+
+  .example-box{
+    background:#eef4fb;
+    border-right:5px solid #4a72a8;
+    border-radius:10px;
+    padding:14px 20px;
+    margin:12px 0;
+  }
+  .example-box .label{font-weight:800;color:#4a72a8;display:block;margin-bottom:6px;}
+
+  .rules-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin:18px 0;
+  }
+  .rule-card{
+    background:var(--cream);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:16px;
+  }
+  .rule-card .num{
+    display:inline-block;
+    background:var(--brown-dark);
+    color:var(--gold-light);
+    width:30px;height:30px;
+    border-radius:50%;
+    text-align:center;
+    line-height:30px;
+    font-weight:800;
+    margin-bottom:8px;
+  }
+  .rule-card h4{color:var(--brown-dark);margin-bottom:6px;}
+
+  .refs-list{columns:2;column-gap:24px;margin-top:10px;}
+  .refs-list li{margin-bottom:8px;break-inside:avoid;font-size:.95rem;}
+
+  .anki-btn-wrap{
+    text-align:center;
+    margin:36px 0 10px;
+  }
+
+  footer{
+    background:linear-gradient(135deg,var(--green-dark),var(--brown-dark));
+    color:#f2e6c8;
+    text-align:center;
+    padding:44px 20px;
+    margin-top:20px;
+  }
+  footer p{font-family:'Amiri',serif;font-size:1.3rem;margin-bottom:10px;}
+  footer .small{font-size:.85rem;color:#d8c9a0;}
+
+  @media(max-width:640px){
+    nav.toc ul{grid-template-columns:1fr;}
+    .rules-grid{grid-template-columns:1fr;}
+    .refs-list{columns:1;}
+    header h1{font-size:1.8rem;}
+    section{padding:22px 18px;}
   }
 </style>
 </head>
 <body>
 
-<nav class="top-nav">
-  <a href="../index.html">→ العودة لفهرس السيرة</a>
-  <span class="stage-tag">قبل البعثة والمقدمات</span>
-</nav>
-
 <header>
-  <span class="eyebrow">الدرس 1 من 46</span>
-  <h1>مقدمة ج1: السيرة وبدء الأمة</h1>
+  <div class="series-badge">سلسلة السيرة النبوية — المحاضرة الأولى</div>
+  <h1>مقدمة في دراسة السيرة النبوية</h1>
+  <p class="subtitle">لماذا ندرس السيرة؟ وما القواعد الأربع التي يجب أن نستحضرها مع كل حدث من أحداثها؟</p>
+  <div class="lecturer">الشيخ راغب السرجاني</div>
+  <div class="top-banner-btn">
+    <button class="btn-anki" onclick="downloadAnkiDeck()">🗂️ حمّل بطاقات أنكي</button>
+  </div>
 </header>
 
+<nav class="toc">
+  <h2>محتويات المحاضرة</h2>
+  <ul>
+    <li><a href="#s1">١. لماذا هذا الرجل بالذات؟</a></li>
+    <li><a href="#s2">٢. أهمية الزمن: أزمة الأمة اليوم</a></li>
+    <li><a href="#s3">٣. اليقين ودرس غزوة الأحزاب</a></li>
+    <li><a href="#s4">٤. من يبني الأمة من جديد؟</a></li>
+    <li><a href="#s5">٥. لماذا هذه المجموعة بالذات؟</a></li>
+    <li><a href="#s6">٦. القواعد الأربع لدراسة السيرة</a></li>
+    <li><a href="#s7">٧. أهم المراجع المعتمدة</a></li>
+    <li><a href="#s8">٨. منهج المحاضِر في العرض</a></li>
+  </ul>
+</nav>
+
 <main>
-  <div class="placeholder">
-    <div class="icon">۞</div>
-    <p>هذه الصفحة جاهزة الآن كإطار فارغ — أضف محتوى هذا الدرس هنا لاحقًا.</p>
+
+<section id="s1">
+  <h2>١. لماذا هذا الرجل بالذات؟</h2>
+  <p>يفتتح الشيخ راغب السرجاني السلسلة ببيان عظمة النبي صلى الله عليه وسلم، موضحًا أنه ليس مجرد شخصية تاريخية بارزة، بل هو الإنسان الأعظم في تاريخ البشرية كلها منذ خلق آدم إلى قيام الساعة، وأنه الوحيد الذي تفوّق في كل مجالات الكمال البشري في آن واحد.</p>
+
+  <div class="key-point">أغلب الناس يتفوقون في مجال ويقصّرون في آخر، أما النبي صلى الله عليه وسلم فقد جمع الكمال في العبادة والمعاملة والشجاعة والكرم والحلم والزهد والحكم والتواضع معًا، دون أن يتأخر في واحدة منها.</div>
+
+  <div class="evidence-block">
+    <span class="label">الدليل من القرآن على عظيم خُلقه</span>
+    قال تعالى: «وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ» — فالله سبحانه، بأسمائه العظيمة الكبير المتعال، هو من وصف خُلق النبي صلى الله عليه وسلم بأنه عظيم.
   </div>
+
+  <div class="evidence-block">
+    <span class="label">دليل آخر: القسم بحياته</span>
+    قال تعالى: «لَعَمْرُكَ إِنَّهُمْ لَفِي سَكْرَتِهِمْ يَعْمَهُونَ» — وهذا قسم من الله عز وجل بحياة النبي صلى الله عليه وسلم، وهي منزلة لم تُعطَ لغيره.
+  </div>
+
+  <h3>مكانته يوم القيامة</h3>
+  <p>يستعرض المحاضر جملة من الخصائص التي تفرّد بها النبي صلى الله عليه وسلم يوم القيامة، لبيان أن دراسة سيرته ليست ترفًا معرفيًا، بل اتصال بأعظم شخصية ستشفع للخلائق وتقودهم إلى الجنة.</p>
+
+  <table class="comparison-table" style="width:100%;border-collapse:collapse;margin:16px 0;">
+    <thead>
+      <tr style="background:var(--cream-2);">
+        <th style="padding:10px;border:1px solid var(--border);text-align:right;">الخصيصة</th>
+        <th style="padding:10px;border:1px solid var(--border);text-align:right;">البيان</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:10px;border:1px solid var(--border);">الشفاعة العظمى</td><td style="padding:10px;border:1px solid var(--border);">لن يبدأ حساب الخلائق يوم القيامة إلا بشفاعته صلى الله عليه وسلم</td></tr>
+      <tr><td style="padding:10px;border:1px solid var(--border);">قيادة أهل الجنة</td><td style="padding:10px;border:1px solid var(--border);">لن يدخل المؤمنون الجنة إلا خلفه صلى الله عليه وسلم</td></tr>
+      <tr><td style="padding:10px;border:1px solid var(--border);">رحلة المعراج</td><td style="padding:10px;border:1px solid var(--border);">وصل إلى مكان لم يصل إليه بشر ولا ملك من قبله، حتى جبريل عليه السلام توقف عند سدرة المنتهى ولم يستطع التقدم</td></tr>
+      <tr><td style="padding:10px;border:1px solid var(--border);">رؤية الجنة والنار</td><td style="padding:10px;border:1px solid var(--border);">شهدهما بعينه، لا بالخبر فقط</td></tr>
+    </tbody>
+  </table>
+
+  <div class="definition-box">
+    <span class="label">تعريف: سدرة المنتهى</span>
+    شجرة عظيمة في السماء السابعة تمثل أقصى حد يصل إليه علم المخلوقات ووحيهم، وهي الموضع الذي وقف عنده جبريل عليه السلام في رحلة المعراج ولم يستطع تجاوزه، بينما تجاوزه النبي صلى الله عليه وسلم بتمكين من الله عز وجل.
+  </div>
+
+  <div class="example-box">
+    <span class="label">مثال توضيحي</span>
+    يشبّه المحاضر الأمر بأن أعظم الملائكة مكانة، وهو جبريل عليه السلام حامل الوحي، له حد لا يتجاوزه، بينما فُتح للنبي صلى الله عليه وسلم بابٌ لم يُفتح لأحد من قبله؛ وهذا يبيّن أن مقارنة النبي صلى الله عليه وسلم لا تكون بالبشر فقط، بل حتى بمقامات الملائكة الكبار.
+  </div>
+</section>
+
+<section id="s2">
+  <h2>٢. أهمية الزمن: أزمة الأمة اليوم</h2>
+  <p>ينتقل المحاضر لبيان سبب إلحاح دراسة السيرة في زماننا تحديدًا، مشيرًا إلى وجود تباين كبير بين وصف القرآن للأمة الإسلامية وواقعها المُعاش اليوم.</p>
+
+  <div class="evidence-block">
+    <span class="label">الوصف القرآني للأمة</span>
+    قال تعالى: «كُنتُمْ خَيْرَ أُمَّةٍ أُخْرِجَتْ لِلنَّاسِ تَأْمُرُونَ بِالْمَعْرُوفِ وَتَنْهَوْنَ عَنِ الْمُنكَرِ وَتُؤْمِنُونَ بِاللَّهِ»، وقال أيضًا: «وَكَذَٰلِكَ جَعَلْنَاكُمْ أُمَّةً وَسَطًا لِّتَكُونُوا شُهَدَاءَ عَلَى النَّاسِ».
+  </div>
+
+  <h3>مظاهر التخلف التي يرصدها المحاضر</h3>
+  <div class="rules-grid">
+    <div class="rule-card">
+      <span class="num">١</span>
+      <h4>تخلف عسكري</h4>
+      <p>ضعف تسليح أغلب الدول الإسلامية مقارنة بمن يحاربها، ووجود سوابق لتدمير دول لأسلحتها بنفسها تحت الضغط.</p>
+    </div>
+    <div class="rule-card">
+      <span class="num">٢</span>
+      <h4>تخلف اقتصادي</h4>
+      <p>فقر اقتصادي رغم امتلاك العالم الإسلامي لثروات ضخمة من النفط والمعادن والممرات الاستراتيجية.</p>
+    </div>
+    <div class="rule-card">
+      <span class="num">٣</span>
+      <h4>تخلف علمي</h4>
+      <p>فجوة علمية تُقدَّر بمئات السنين بين العالم الإسلامي وغيره.</p>
+    </div>
+    <div class="rule-card">
+      <span class="num">٤</span>
+      <h4>تفكك ونزاع داخلي</h4>
+      <p>خلافات حدودية بين الدول الإسلامية المتجاورة، وغياب الوحدة.</p>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    <span class="label">تنبيه المحاضر: البُعد الأخلاقي مهمل</span>
+    يحذّر المحاضر من اختزال معنى "الحضارة" في القوة المادية فقط (سلاح، عمران، مال، علم)، مشيرًا إلى أن انتشار الفوضى الأخلاقية والرشوة والفساد الإداري وضعف القيم في الشارع الإسلامي هو أيضًا مظهر خطير من مظاهر التراجع الحضاري لا يقل أهمية عن التخلف المادي.
+  </div>
+
+  <div class="key-point">القرآن حق، والوصف القرآني للأمة بأنها "خير أمة" حق لا يتغير — لكن المشكلة ليست في القرآن، بل في أننا حفظنا القرآن ولم نُحسن تطبيق الإسلام كما ينبغي.</div>
+
+  <p>يختم المحاضر هذا الجزء برسالة أمل صريحة: لا مجال لليأس أو الإحباط، بل الدعوة هي دعوة بناء وترميم للأمة، مستندًا إلى وعد الله بنصر رسله والمؤمنين.</p>
+
+  <div class="evidence-block">
+    <span class="label">دليل وعد النصر</span>
+    قال تعالى: «إِنَّا لَنَنصُرُ رُسُلَنَا وَالَّذِينَ آمَنُوا فِي الْحَيَاةِ الدُّنْيَا وَيَوْمَ يَقُومُ الْأَشْهَادُ». ويستدل المحاضر أيضًا بحديث: «إِنَّ اللَّهَ زَوَى لِيَ الْأَرْضَ مَشَارِقَهَا وَمَغَارِبَهَا، وَإِنَّ أُمَّتِي سَيَبْلُغُ مُلْكُهَا مَا زُوِيَ لِي مِنْهَا».
+  </div>
+</section>
+
+<section id="s3">
+  <h2>٣. اليقين ودرس غزوة الأحزاب</h2>
+  <p>يضرب المحاضر مثالًا تاريخيًا لبيان الفارق بين يقين المؤمن الصادق ووهم من يقيس الأمور بالمقاييس المادية فقط، وذلك من خلال موقف غزوة الأحزاب.</p>
+
+  <div class="definition-box">
+    <span class="label">تعريف: غزوة الأحزاب (الخندق)</span>
+    معركة دفاعية حدثت في السنة الخامسة للهجرة، حاصر فيها نحو عشرة آلاف مقاتل من قريش وحلفائها المدينة المنورة، وحفر المسلمون خندقًا حول المدينة للدفاع عنها بمشورة سلمان الفارسي رضي الله عنه.
+  </div>
+
+  <p>أثناء حفر الخندق، واجه الصحابة صخرة عجزوا عن كسرها، فتقدّم النبي صلى الله عليه وسلم وضربها بنفسه.</p>
+
+  <div class="quote-block">
+    عند الضربة الأولى قال: «بِسْمِ اللَّهِ، اللَّهُ أَكْبَرُ، أُعْطِيتُ مَفَاتِيحَ الشَّامِ، وَاللَّهِ إِنِّي لَأُبْصِرُ قُصُورَهَا الْحُمْرَ الْآنَ». وعند الثانية: «اللَّهُ أَكْبَرُ، أُعْطِيتُ فَارِسَ، وَاللَّهِ إِنِّي لَأُبْصِرُ قَصْرَ الْمَدَائِنِ الْأَبْيَضَ». وعند الثالثة: «اللَّهُ أَكْبَرُ، أُعْطِيتُ مَفَاتِيحَ الْيَمَنِ، وَاللَّهِ إِنِّي لَأُبْصِرُ أَبْوَابَ صَنْعَاءَ مِنْ مَكَانِي».
+    <span class="source">— رواه أحمد والنسائي، من حديث البراء بن عازب رضي الله عنه</span>
+  </div>
+
+  <p>هذا الموقف حدث في أشد لحظات الضيق، حيث كان المسلمون محاصَرين بعشرة آلاف مقاتل. ورغم ذلك، كان رد فعل المؤمنين والمنافقين متباينًا تمامًا.</p>
+
+  <table class="comparison-table" style="width:100%;border-collapse:collapse;margin:16px 0;">
+    <thead>
+      <tr style="background:var(--cream-2);">
+        <th style="padding:10px;border:1px solid var(--border);text-align:right;">الفريق</th>
+        <th style="padding:10px;border:1px solid var(--border);text-align:right;">الموقف من كلام النبي ﷺ عن الفتوحات</th>
+        <th style="padding:10px;border:1px solid var(--border);text-align:right;">السبب</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:10px;border:1px solid var(--border);">المؤمنون الصادقون</td>
+        <td style="padding:10px;border:1px solid var(--border);">صدّقوا وازدادوا إيمانًا وتسليمًا</td>
+        <td style="padding:10px;border:1px solid var(--border);">قدّروا قدر الله عز وجل ولم يعتمدوا على المقارنة المادية فقط</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;border:1px solid var(--border);">المنافقون</td>
+        <td style="padding:10px;border:1px solid var(--border);">اعتبروه غرورًا</td>
+        <td style="padding:10px;border:1px solid var(--border);">قاسوا الأمر بالفجوة الظاهرة بين إمكانيات المسلمين والأحزاب المحاصِرة فقط</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="evidence-block">
+    <span class="label">الدليل القرآني على الموقفين</span>
+    عن المؤمنين: «وَلَمَّا رَأَى الْمُؤْمِنُونَ الْأَحْزَابَ قَالُوا هَٰذَا مَا وَعَدَنَا اللَّهُ وَرَسُولُهُ وَصَدَقَ اللَّهُ وَرَسُولُهُ ۖ وَمَا زَادَهُمْ إِلَّا إِيمَانًا وَتَسْلِيمًا». وعن المنافقين: «وَإِذْ يَقُولُ الْمُنَافِقُونَ وَالَّذِينَ فِي قُلُوبِهِم مَّرَضٌ مَّا وَعَدَنَا اللَّهُ وَرَسُولُهُ إِلَّا غُرُورًا».
+  </div>
+
+  <div class="key-point">الدرس المستفاد: النصر يأتي غالبًا بعد اشتداد الأزمات لا قبلها؛ فكلما ضاقت الأمور واشتدت الحلقات، اقترب الفرج، وهذا هو معيار اليقين الذي يريد المحاضر أن يزرعه في المتابعين لهذه السلسلة.</div>
+
+  <div class="example-box">
+    <span class="label">مثال معاصر يطرحه المحاضر</span>
+    يربط المحاضر هذا الدرس بواقع الأمة اليوم: فكما كانت الفجوة بين إمكانيات المسلمين والأحزاب في الخندق هائلة ظاهريًا، فإن الفجوة العسكرية والاقتصادية بين الأمة الإسلامية اليوم وغيرها لا ينبغي أن تُضعف اليقين بأن النصر قادم متى اشتدت الأزمة واستحكمت حلقاتها.
+  </div>
+</section>
+
+<section id="s4">
+  <h2>٤. من يبني الأمة من جديد؟</h2>
+  <p>يطرح المحاضر سؤالًا محوريًا: ما الطريق الصحيح لإعادة بناء الأمة الإسلامية؟ ويستعرض تجارب بشرية مختلفة اتُّبعت في بعض الدول الإسلامية (كالمنهج الاشتراكي والمنهج الرأسمالي والقوانين المستوردة من فرنسا أو إيطاليا أو إنجلترا)، ويخلص إلى أن هذا التشتت بين مناهج مستوردة متعددة هو جزء من أزمة الأمة.</p>
+
+  <div class="evidence-block">
+    <span class="label">الحديث الجامع لحل هذه الأزمة</span>
+    عن العرباض بن سارية رضي الله عنه قال: وعظنا رسول الله صلى الله عليه وسلم موعظة بليغة وجلت منها القلوب وذرفت منها العيون، فقلنا: يا رسول الله كأنها موعظة مودّع فأوصنا. قال: «أُوصِيكُمْ بِتَقْوَى اللَّهِ وَالسَّمْعِ وَالطَّاعَةِ... فَعَلَيْكُمْ بِسُنَّتِي وَسُنَّةِ الْخُلَفَاءِ الرَّاشِدِينَ الْمَهْدِيِّينَ، تَمَسَّكُوا بِهَا وَعَضُّوا عَلَيْهَا بِالنَّوَاجِذِ، وَإِيَّاكُمْ وَمُحْدَثَاتِ الْأُمُورِ فَإِنَّ كُلَّ بِدْعَةٍ ضَلَالَةٌ».
+    <span class="source">— رواه أبو داود والترمذي، وصححه الألباني</span>
+  </div>
+
+  <div class="key-point">خلاصة المحاضر: الطريق الصحيح لإعادة بناء الأمة ليس مناهج مستوردة من الشرق أو الغرب، بل الرجوع إلى سنة النبي صلى الله عليه وسلم ومنهج الخلفاء الراشدين، وهذا ما يجعل دراسة السيرة النبوية أمرًا حتميًا لكل من أراد الإصلاح.</div>
+</section>
+
+<section id="s5">
+  <h2>٥. لماذا هذه المجموعة بالذات؟</h2>
+  <p>يوضح المحاضر أن هذه السلسلة ستتناول العهد المكي من السيرة النبوية، وليس الهدف استقصاء كل واقعة حدثت في تلك الفترة، لعدة أسباب:</p>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <span class="num">١</span>
+      <h4>دقة التوثيق غير المسبوقة</h4>
+      <p>حياة النبي صلى الله عليه وسلم مسجَّلة بدقة غير مسبوقة في تاريخ البشرية، حتى في أدق تفاصيل حياته الشخصية.</p>
+    </div>
+    <div class="rule-card">
+      <span class="num">٢</span>
+      <h4>التنوع العجيب في حياته</h4>
+      <p>تنقّل بين حالات متضادة: مطاردًا ثم مراسلًا للملوك، فقيرًا معدمًا ثم غنيًا منفقًا، منتصرًا ومهزومًا، ما يجعل استيعاب كل هذا في مجموعة واحدة أمرًا صعبًا.</p>
+    </div>
+    <div class="rule-card">
+      <span class="num">٣</span>
+      <h4>ضخامة الجيل المحيط به</h4>
+      <p>الصحابة رضوان الله عليهم كانوا جيلًا فاعلًا ومتفاعلًا بشدة، وكل واحد منهم قصة ضخمة بذاتها، فتشعّبت الأحداث بشكل هائل.</p>
+    </div>
+    <div class="rule-card">
+      <span class="num">٤</span>
+      <h4>عظمة الأحداث وحاجتها للتحليل</h4>
+      <p>الأحداث المؤثرة في التاريخ تحتاج إلى دراسة وتحليل مستمرَّين عبر الأجيال، وسيرة النبي صلى الله عليه وسلم معين لا ينضب لكل جيل من الباحثين.</p>
+    </div>
+  </div>
+
+  <div class="key-point">لهذه الأسباب مجتمعة، يقرر المحاضر أن السلسلة ستركّز على استنباط القواعد المهمة لبناء الأمة الإسلامية من خلال الأحداث التي تلامس واقعنا المعاصر، لا على استقصاء كل واقعة بلا استثناء.</div>
+</section>
+
+<section id="s6">
+  <h2>٦. القواعد الأربع لدراسة السيرة</h2>
+  <p>هذا هو المحور المنهجي المركزي في المحاضرة: أربع قواعد يجب استحضارها مع كل حدث من أحداث السيرة النبوية.</p>
+
+  <h3>القاعدة الأولى: السيرة مصدر تشريعي</h3>
+  <div class="definition-box">
+    <span class="label">تعريف: السنة المطهَّرة</span>
+    كل قول أو فعل أو تقرير صدر عن النبي صلى الله عليه وسلم، أو فعل فعله أحد الصحابة وأقرّه النبي صلى الله عليه وسلم بسكوته عنه أو باستحسانه له.
+  </div>
+  <p>يؤكد المحاضر أن السنة هي المصدر الثاني للتشريع الإسلامي بعد القرآن الكريم بلا خلاف بين العلماء، وأن فهم السنة لا يتحقق دون دراسة السيرة النبوية.</p>
+  <div class="evidence-block">
+    <span class="label">الدليل القرآني على حجية السنة</span>
+    قال تعالى: «وَأَنزَلْنَا إِلَيْكَ الذِّكْرَ لِتُبَيِّنَ لِلنَّاسِ مَا نُزِّلَ إِلَيْهِمْ»، وقال: «وَمَا آتَاكُمُ الرَّسُولُ فَخُذُوهُ وَمَا نَهَاكُمْ عَنْهُ فَانتَهُوا».
+  </div>
+  <div class="warning-box">
+    <span class="label">تحذير المحاضر</span>
+    ينبّه إلى وجود من يشكك في حجية السنة ويكتفي بالقرآن الكريم فقط، ويرد عليهم بالحديث الذي حذّر منه النبي صلى الله عليه وسلم نفسه: «أَلَا إِنَّ مَا حَرَّمَ رَسُولُ اللَّهِ مِثْلُ مَا حَرَّمَ اللَّهُ» — فمن يفرّق بين طاعة القرآن وطاعة السنة يخالف نصًا نبويًا صريحًا.
+    <span class="source">— رواه أبو داود والترمذي</span>
+  </div>
+
+  <h3>القاعدة الثانية: استحضار أن النبي صلى الله عليه وسلم رسول موحى إليه</h3>
+  <p>يجب عند كل موقف من مواقف السيرة أن نستحضر أن اختياراته صلى الله عليه وسلم ليست اجتهادًا بشريًا عاديًا، بل موجَّهة بالوحي، وأن الله عز وجل كان يتدخل بالتصويب لو اختار خلاف الأولى.</p>
+  <div class="evidence-block">
+    <span class="label">الدليل</span>
+    قال تعالى: «وَمَا يَنطِقُ عَنِ الْهَوَىٰ * إِنْ هُوَ إِلَّا وَحْيٌ يُوحَىٰ».
+  </div>
+
+  <h3>القاعدة الثالثة: تعلُّم كيف نحب النبي صلى الله عليه وسلم</h3>
+  <p>يستشهد المحاضر بالحوار المشهور بين عمر بن الخطاب رضي الله عنه والنبي صلى الله عليه وسلم حول معنى المحبة الكاملة.</p>
+  <div class="quote-block">
+    قال عمر بن الخطاب رضي الله عنه: «يا رسول الله، لأنت أحبّ إليّ من كل شيء إلا من نفسي». فقال صلى الله عليه وسلم: «لَا، وَالَّذِي نَفْسِي بِيَدِهِ، حَتَّى أَكُونَ أَحَبَّ إِلَيْكَ مِنْ نَفْسِكَ». فقال عمر: «فَإِنَّهُ الْآنَ وَاللَّهِ لَأَنْتَ أَحَبُّ إِلَيَّ مِنْ نَفْسِي». فقال صلى الله عليه وسلم: «الْآنَ يَا عُمَرُ».
+    <span class="source">— رواه البخاري</span>
+  </div>
+  <div class="key-point">دراسة تفاصيل السيرة، لا مجرد التعرف السطحي عليها، هي ما يولّد المحبة الحقيقية في القلب — وكلما ازداد المرء معرفة بالنبي صلى الله عليه وسلم، ازداد حبًا له.</div>
+  <div class="evidence-block">
+    <span class="label">دليل ربط المحبة بالإيمان</span>
+    قال تعالى: «قُلْ إِن كَانَ آبَاؤُكُمْ وَأَبْنَاؤُكُمْ... أَحَبَّ إِلَيْكُم مِّنَ اللَّهِ وَرَسُولِهِ... فَتَرَبَّصُوا حَتَّىٰ يَأْتِيَ اللَّهُ بِأَمْرِهِ ۗ وَاللَّهُ لَا يَهْدِي الْقَوْمَ الْفَاسِقِينَ».
+  </div>
+
+  <h3>القاعدة الرابعة: تعلُّم الحكمة من خلال جزئيات السيرة</h3>
+  <p>يذكر المحاضر عدة صور للحكمة النبوية التي تُستخلص من دراسة السيرة:</p>
+
+  <table class="comparison-table" style="width:100%;border-collapse:collapse;margin:16px 0;">
+    <thead>
+      <tr style="background:var(--cream-2);">
+        <th style="padding:10px;border:1px solid var(--border);text-align:right;">نوع الحكمة</th>
+        <th style="padding:10px;border:1px solid var(--border);text-align:right;">الشاهد من السيرة</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:10px;border:1px solid var(--border);">فقه الواقع / الحكمة المرحلية</td>
+        <td style="padding:10px;border:1px solid var(--border);">كفّ اليد عن القتال في فترة، والقتال في فترة أخرى، بحسب الظروف والملابسات المحيطة بكل مرحلة</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;border:1px solid var(--border);">حكمة التدرج</td>
+        <td style="padding:10px;border:1px solid var(--border);">تحريم الخمر والربا على مراحل، لا دفعة واحدة، لتثبيت التغيير في المجتمع</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;border:1px solid var(--border);">حكمة الوسطية</td>
+        <td style="padding:10px;border:1px solid var(--border);">التوازن بين العمل والعبادة والزواج والجهاد دون إفراط في جانب على حساب آخر</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="example-box">
+    <span class="label">مثال على حكمة الوسطية</span>
+    كان النبي صلى الله عليه وسلم يعمل حتى تشقّقت يداه من العمل، لكنه لم يفرط في العمل على حساب حق الله وحق الأهل؛ وكان يصوم ويفطر، ويصلي وينام، فلا إفراط ولا تفريط في أي جانب من جوانب حياته.
+  </div>
+
+  <div class="warning-box">
+    <span class="label">مثال مقابل يبيّن فقه الواقع</span>
+    يذكر المحاضر مقارنة بين موقفين متباينين تمامًا: صبر النبي صلى الله عليه وسلم على تعذيب ياسر وسمية رضي الله عنهما بقوله فقط «صَبْرًا آلَ يَاسِرٍ فَإِنَّ مَوْعِدَكُمُ الْجَنَّةُ» دون رد فعل عسكري فوري في تلك المرحلة المبكرة، مقارنة بردة الفعل الحازمة في مراحل لاحقة من الدعوة — ليبيّن أن التصرف كان محكومًا بفقه المرحلة لا برد الفعل الآني.
+  </div>
+</section>
+
+<section id="s7">
+  <h2>٧. أهم المراجع المعتمدة</h2>
+  <p>يذكر المحاضر أن هناك آلاف الكتب التي أُلّفت عن السيرة النبوية، ويحدد أهم المراجع التي اعتمد عليها في هذه السلسلة:</p>
+
+  <h3>كتب التفسير</h3>
+  <ul class="refs-list">
+    <li>تفسير القرآن العظيم — ابن كثير</li>
+    <li>الجامع لأحكام القرآن — القرطبي</li>
+    <li>في ظلال القرآن — سيد قطب</li>
+  </ul>
+
+  <h3>كتب الحديث وشروحه</h3>
+  <ul class="refs-list">
+    <li>صحيح البخاري وشرحه فتح الباري — ابن حجر العسقلاني</li>
+    <li>صحيح مسلم وشرحه — النووي</li>
+    <li>سنن الترمذي وأبي داود والنسائي وابن ماجه</li>
+    <li>مسند الإمام أحمد بن حنبل</li>
+  </ul>
+
+  <h3>كتب السيرة المتخصصة</h3>
+  <ul class="refs-list">
+    <li>سيرة ابن هشام (نسخة محققة: صحيح سيرة ابن هشام - مجدي فتحي السيد)</li>
+    <li>صحيح السيرة النبوية — إبراهيم العلي</li>
+    <li>زاد المعاد في هدي خير العباد — ابن القيم</li>
+    <li>السيرة النبوية — ابن كثير</li>
+    <li>الرحيق المختوم — المباركفوري</li>
+    <li>السيرة النبوية — علي الصلابي</li>
+    <li>الأساس في السنة — سعيد حوى</li>
+    <li>فقه السيرة — محمد الغزالي / البوطي</li>
+    <li>السيرة النبوية دروس وعبر — مصطفى السباعي</li>
+    <li>سبل الهدى والرشاد — الصالحي الشامي (موسوعة من 12 مجلدًا)</li>
+    <li>موسوعة السيرة النبوية — حمزة النشرتي وآخرون</li>
+    <li>دراسة في السيرة — عماد الدين خليل</li>
+    <li>شعاع من السيرة النبوية — عبد الحميد الراجحي</li>
+  </ul>
+
+  <div class="warning-box">
+    <span class="label">تنبيه مهم من المحاضر بخصوص سيرة ابن هشام</span>
+    يحذّر المحاضر من أن كتاب سيرة ابن هشام الأصلي يحتوي على أحداث كثيرة غير موثقة، ولذلك ينصح بالرجوع إلى النسخة المحققة منه بدلًا من الأصل مباشرة.
+  </div>
+</section>
+
+<section id="s8">
+  <h2>٨. منهج المحاضِر في العرض</h2>
+  <p>يختم المحاضر مقدمته ببيان سياستين أساسيتين سيلتزم بهما طوال السلسلة:</p>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <span class="num">١</span>
+      <h4>الالتزام بالصحيح قدر المستطاع</h4>
+      <p>حتى لو كانت بعض الروايات الأخرى أكثر تشويقًا أو جاذبية في السياق، لن يعتمد عليها لأنها تُضعف قواعد بناء الأمة إذا لم تكن ثابتة.</p>
+    </div>
+    <div class="rule-card">
+      <span class="num">٢</span>
+      <h4>التركيز على القواعد لا الاستقصاء</h4>
+      <p>بدلًا من تناول السيرة من زاوية واحدة (الأخلاق، أو الإعجاز، أو الجانب الفكري فقط)، سيركّز على استنباط القواعد التي تلامس واقعنا المعاصر وتخدم بناء الأمة.</p>
+    </div>
+  </div>
+
+  <div class="key-point">يعلن المحاضر أن المحاضرة القادمة ستبدأ من بعثة النبي صلى الله عليه وسلم مباشرة، وليس من مولده، لأن التركيز سينصبّ على الأحداث ذات الدلالة التشريعية، والتي لم تبدأ إلا بالبعثة. وستتناول المحاضرة القادمة وضع العالم (الجزيرة العربية، الروم، فارس، الهند، الحبشة، أوروبا) قُبيل البعثة، للمقارنة بين حال العالم حينها وحاله اليوم.</div>
+</section>
+
 </main>
 
-<div class="bottom-nav">
-  <span></span>
-  <a href="../index.html">فهرس السيرة</a>
-  <a href="02-مقدمة-ج2-من-الظلمات-إلى-النور.html">الدرس التالي →</a>
+<div class="anki-btn-wrap">
+  <button class="btn-anki" onclick="downloadAnkiDeck()">🗂️ حمّل بطاقات أنكي</button>
 </div>
+
+<footer>
+  <p>اللهم صلِّ وسلم وبارك على سيدنا محمد، وعلى آله وصحبه أجمعين</p>
+  <p class="small">مع تحيات النور للإنتاج الإعلامي والتوزيع — المحاضرة الأولى من سلسلة السيرة النبوية</p>
+</footer>
+
+<script>
+const ankiCards = [
+  ["ما تعريف سدرة المنتهى؟","شجرة عظيمة في السماء السابعة تمثل أقصى حد يصل إليه علم المخلوقات ووحيهم، وهي الموضع الذي وقف عنده جبريل عليه السلام في رحلة المعراج ولم يستطع تجاوزه"],
+  ["ما تعريف غزوة الأحزاب (الخندق)؟","معركة دفاعية في السنة الخامسة للهجرة، حاصر فيها نحو عشرة آلاف مقاتل من قريش وحلفائها المدينة المنورة، وحفر المسلمون خندقًا حول المدينة بمشورة سلمان الفارسي رضي الله عنه"],
+  ["ما تعريف السنة المطهرة؟","كل قول أو فعل أو تقرير صدر عن النبي صلى الله عليه وسلم، أو فعل فعله أحد الصحابة وأقرّه النبي صلى الله عليه وسلم"],
+  ["أكمل الآية: وإنك لعلى ...","خُلُقٍ عَظِيمٍ"],
+  ["ما الدليل على أن الله أقسم بحياة النبي صلى الله عليه وسلم؟","قوله تعالى: لَعَمْرُكَ إِنَّهُمْ لَفِي سَكْرَتِهِمْ يَعْمَهُونَ"],
+  ["ماذا قال النبي صلى الله عليه وسلم عند ضربه الأولى للصخرة في الخندق؟ ← ما البشارة التي أعطاها؟","بشارة بفتح الشام، وقال: بسم الله، الله أكبر، أُعطيت مفاتيح الشام، والله إني لأبصر قصورها الحمر الآن"],
+  ["ماذا بشّر به النبي صلى الله عليه وسلم عند الضربة الثانية للصخرة؟","فتح فارس، وقال: الله أكبر، أُعطيت فارس، والله إني لأبصر قصر المدائن الأبيض"],
+  ["ماذا بشّر به النبي صلى الله عليه وسلم عند الضربة الثالثة للصخرة؟","فتح اليمن، وقال: الله أكبر، أُعطيت مفاتيح اليمن، والله إني لأبصر أبواب صنعاء من مكاني"],
+  ["من راوي حديث ضرب الصخرة في غزوة الخندق؟","البراء بن عازب رضي الله عنه، رواه أحمد والنسائي"],
+  ["كيف كان موقف المؤمنين الصادقين عند رؤية الأحزاب؟ ← ما الدليل؟","صدّقوا وازدادوا إيمانًا وتسليمًا، لقوله تعالى: ولما رأى المؤمنون الأحزاب قالوا هذا ما وعدنا الله ورسوله وصدق الله ورسوله وما زادهم إلا إيمانًا وتسليمًا"],
+  ["كيف كان موقف المنافقين عند رؤية الأحزاب؟ ← ما الدليل؟","اعتبروا وعد النصر غرورًا، لقوله تعالى: وإذ يقول المنافقون والذين في قلوبهم مرض ما وعدنا الله ورسوله إلا غرورًا"],
+  ["ما الدرس المستفاد من موقف المؤمنين والمنافقين في غزوة الأحزاب؟","النصر يأتي غالبًا بعد اشتداد الأزمات لا قبلها، وكلما ضاقت الأمور اقترب الفرج"],
+  ["ما نص حديث العرباض بن سارية في وصية النبي صلى الله عليه وسلم؟","أوصيكم بتقوى الله والسمع والطاعة... فعليكم بسنتي وسنة الخلفاء الراشدين المهديين، تمسكوا بها وعضوا عليها بالنواجذ، وإياكم ومحدثات الأمور فإن كل بدعة ضلالة"],
+  ["من راوي حديث العرباض بن سارية؟ ← من صحّحه؟","رواه أبو داود والترمذي، وصححه الألباني"],
+  ["ما القاعدة الأولى من القواعد الأربع لدراسة السيرة؟","أن نفقه أن السيرة هي المصدر الثاني للتشريع الإسلامي بعد القرآن الكريم (فهم السنة)"],
+  ["ما الدليل القرآني على أن السنة مصدر تشريعي؟","قوله تعالى: وأنزلنا إليك الذكر لتبين للناس ما نزل إليهم، وقوله: وما آتاكم الرسول فخذوه وما نهاكم عنه فانتهوا"],
+  ["ما نص الحديث الذي يردّ على من يكتفي بالقرآن وينكر حجية السنة؟","ألا إن ما حرم رسول الله مثل ما حرم الله (رواه أبو داود والترمذي)"],
+  ["ما القاعدة الثانية من القواعد الأربع لدراسة السيرة؟","استحضار أن النبي صلى الله عليه وسلم رسول موحى إليه، وأن اختياراته موجَّهة بالوحي لا اجتهاد بشري بحت"],
+  ["ما الدليل القرآني على أن كلام النبي صلى الله عليه وسلم وحي؟","قوله تعالى: وما ينطق عن الهوى، إن هو إلا وحي يوحى"],
+  ["ما القاعدة الثالثة من القواعد الأربع لدراسة السيرة؟","تعلُّم كيف نحب النبي صلى الله عليه وسلم من خلال دراسة تفاصيل حياته"],
+  ["ما نص حوار عمر بن الخطاب مع النبي صلى الله عليه وسلم حول المحبة؟","قال عمر: لأنت أحب إليّ من كل شيء إلا من نفسي، فقال النبي ﷺ: لا، والذي نفسي بيده، حتى أكون أحب إليك من نفسك، فقال عمر: فإنه الآن والله لأنت أحب إليّ من نفسي، فقال النبي ﷺ: الآن يا عمر (رواه البخاري)"],
+  ["ما الدليل القرآني الذي يربط محبة الله ورسوله بالإيمان؟","قوله تعالى: قل إن كان آباؤكم وأبناؤكم... أحب إليكم من الله ورسوله... فتربصوا حتى يأتي الله بأمره والله لا يهدي القوم الفاسقين"],
+  ["ما القاعدة الرابعة من القواعد الأربع لدراسة السيرة؟","تعلُّم الحكمة من خلال دراسة جزئيات حياة النبي صلى الله عليه وسلم"],
+  ["ما تعريف فقه الواقع (الحكمة المرحلية) كما ورد في المحاضرة؟","اختيار القرار المناسب في الوقت المناسب بحسب الظروف والملابسات المحيطة بكل مرحلة، كما في كفّ اليد عن القتال حينًا والقتال حينًا آخر"],
+  ["ما مثال حكمة التدرج في التشريع؟","تحريم الخمر والربا على مراحل متعددة لا دفعة واحدة، لتثبيت التغيير في المجتمع"],
+  ["ما تعريف حكمة الوسطية في السيرة النبوية؟ ← ما الدليل؟","التوازن بين العمل والعبادة والزواج والجهاد دون إفراط أو تفريط، والدليل: وكذلك جعلناكم أمة وسطًا"],
+  ["ما مثال حكمة الوسطية في حياة النبي صلى الله عليه وسلم؟","كان يعمل حتى تشققت يداه، لكن دون إفراط يُضيّع حق الله والأهل، وكان يصوم ويفطر ويصلي وينام"],
+  ["ما الموقف الذي يوضح فقه المرحلة في التعامل مع الأذى؟","صبر النبي صلى الله عليه وسلم على تعذيب ياسر وسمية رضي الله عنهما بقوله: صبرًا آل ياسر فإن موعدكم الجنة، دون رد فعل عسكري في تلك المرحلة المبكرة"],
+  ["ما أول مصدرين اعتمد عليهما المحاضر من كتب التفسير؟","تفسير القرآن العظيم لابن كثير، والجامع لأحكام القرآن للقرطبي"],
+  ["ما الكتاب الذي حذّر منه المحاضر بخصوص الروايات غير الموثقة؟ ← بماذا نصح بدلًا منه؟","سيرة ابن هشام الأصلية تحتوي أحداثًا غير موثقة، ونصح بالرجوع إلى النسخة المحققة: صحيح سيرة ابن هشام لمجدي فتحي السيد"],
+  ["ما اسم الموسوعة الضخمة المكوّنة من 12 مجلدًا التي ذكرها المحاضر ضمن مراجعه؟ ← من مؤلفها؟","سبل الهدى والرشاد في سيرة خير العباد، للإمام محمد بن يوسف الصالحي الشامي"],
+  ["من مؤلف كتاب الرحيق المختوم؟","المباركفوري"],
+  ["من مؤلف كتاب زاد المعاد في هدي خير العباد؟","ابن القيم رحمه الله"],
+  ["ما السياسة الأولى التي التزم بها المحاضر في عرض السلسلة؟","الالتزام بالروايات الصحيحة قدر المستطاع، حتى لو كانت روايات أخرى أكثر تشويقًا"],
+  ["ما السياسة الثانية التي التزم بها المحاضر في عرض السلسلة؟","التركيز على استنباط القواعد التي تلامس واقعنا المعاصر بدل استقصاء كل واقعة أو التركيز على زاوية واحدة فقط"],
+  ["من أين ستبدأ المحاضرة القادمة في السلسلة؟ ← لماذا لم تبدأ من المولد؟","من بعثة النبي صلى الله عليه وسلم، لأن التركيز على الأحداث ذات الدلالة التشريعية التي لم تبدأ إلا بالبعثة"],
+  ["ما الذي ستتناوله المحاضرة القادمة عن وضع العالم؟","وضع العالم قُبيل بعثة النبي صلى الله عليه وسلم في الجزيرة العربية، والروم، وفارس، والهند، والحبشة، وأوروبا"]
+];
+
+function downloadAnkiDeck() {
+  let content = ankiCards.map(([q, a]) => {
+    const clean = s => s.replace(/\t/g, ' ').replace(/\r?\n/g, '<br>');
+    return `${clean(q)}\t${clean(a)}`;
+  }).join('\n');
+  const BOM = '\uFEFF';
+  const blob = new Blob([BOM + content], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'بطاقات_أنكي_مقدمة_في_دراسة_السيرة_النبوية.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
 
 </body>
 </html>
